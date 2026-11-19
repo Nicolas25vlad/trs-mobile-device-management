@@ -1,0 +1,54 @@
+/* TRS26 — controle virtual (identidade da capa: preto, vermelho e dourado) */
+:root{--red:#e63946;--red2:#c1121f;--gold:#f3c928;--gold2:#ca8d14;--bg:#0b0b0b;--btn:1;--stk:1;--alpha:.92;font-family:"Russo One","Anton",Impact,"Arial Narrow",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:radial-gradient(circle at 70% 20%,#3a0d10,transparent 55%),repeating-linear-gradient(-34deg,transparent 0 12px,#ffffff06 13px 14px),var(--bg);color:#f5f5f5;overflow:hidden;overscroll-behavior:none;touch-action:none;user-select:none;-webkit-user-select:none}
+button{font:inherit;color:inherit;border:0;background:none}
+[hidden]{display:none!important}
+/* pareamento */
+.pair{height:100%;display:grid;place-content:center;justify-items:center;gap:12px;padding:20px;text-align:center;touch-action:auto}
+.pair .logo{width:min(260px,60vw);filter:drop-shadow(0 6px 14px #000)}
+.pair h1{font-family:Anton,Impact,sans-serif;letter-spacing:.14em;color:var(--gold);font-size:22px}
+.pair .sub{color:#bbb;font-size:13px;font-family:Arial,sans-serif}
+#pin-form{display:grid;gap:10px;width:min(320px,86vw)}
+#pin-form input{background:#111;border:1px solid #444;color:#fff;padding:12px;font-size:20px;text-align:center;letter-spacing:.3em;border-radius:6px;user-select:text;-webkit-user-select:text}
+#name{font-size:14px!important;letter-spacing:.04em!important}
+#pin-go{background:linear-gradient(135deg,var(--red),var(--red2));padding:14px;font-size:18px;letter-spacing:.12em;border-radius:8px;box-shadow:0 4px 15px #c1121fa0}
+.status{font-size:13px;letter-spacing:.1em;color:var(--gold);min-height:1.2em}
+.status.err{color:#ff6b6b}
+/* controle */
+.pad{position:fixed;inset:0;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:auto 1fr;padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));opacity:var(--alpha)}
+.pad.mirror{direction:rtl}.pad.mirror>*{direction:ltr}
+/* celular em pé (sem tela cheia ou sem trava de orientação, como no iPhone): gira o controle 90° para ficar deitado.
+   Se a trava funcionar, a tela já fica na horizontal e esta regra deixa de valer. controller.js converte o analógico. */
+@media (orientation:portrait){html.playing .pad{inset:auto;top:0;left:100vw;width:100vh;width:100dvh;height:100vw;transform-origin:0 0;transform:rotate(90deg)}}
+#pin-go:disabled,#pin:disabled{opacity:.55}
+.bar{grid-column:1/-1;display:flex;gap:10px;align-items:center;font-size:11px;letter-spacing:.1em;padding:2px 4px 6px}
+.who{background:var(--gold);color:#16120a;padding:3px 8px;border-radius:4px}
+.st{color:#9f9}.st.warn{color:var(--gold)}.st.bad{color:#ff6b6b}
+.lat{color:#aaa;margin-left:auto}.gear{font-size:20px;padding:0 6px}
+.zone{position:relative;display:flex;align-items:center}
+.zone.left{justify-content:flex-start;gap:14px}.zone.right{justify-content:flex-end;gap:14px}
+.mid{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 6px}
+.stick{position:relative;width:calc(150px*var(--stk));height:calc(150px*var(--stk));border-radius:50%;touch-action:none}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px solid #ffffff40;background:radial-gradient(circle,#ffffff10,#ffffff05 60%,transparent 70%);box-shadow:inset 0 0 30px #000}
+.knob{position:absolute;left:50%;top:50%;width:42%;height:42%;margin:-21% 0 0 -21%;border-radius:50%;background:linear-gradient(145deg,#3a3a3a,#141414);border:2px solid var(--gold);box-shadow:0 4px 12px #000a;transition:transform .06s}
+.stick.active .ring{border-color:var(--gold)}
+.b{display:grid;place-items:center;border-radius:50%;font-size:calc(12px*var(--btn));letter-spacing:.06em;background:linear-gradient(145deg,#2a2a2a,#0f0f0f);border:2px solid #ffffff30;box-shadow:0 5px 12px #000b;touch-action:none}
+.b.on{transform:scale(.93);filter:brightness(1.5)}
+.b.small{width:calc(62px*var(--btn));height:calc(40px*var(--btn));border-radius:10px;font-size:calc(10px*var(--btn))}
+.b.sprint{width:calc(74px*var(--btn));height:calc(74px*var(--btn));border-color:var(--gold);color:var(--gold)}
+.diamond{position:relative;width:calc(190px*var(--btn));height:calc(190px*var(--btn))}
+.b.main{position:absolute;width:calc(70px*var(--btn));height:calc(70px*var(--btn))}
+.b.main.y{left:50%;top:0;transform:translateX(-50%);border-color:#f3c928}
+.b.main.x{left:0;top:50%;transform:translateY(-50%);border-color:#5ab0ff}
+.b.main.b2{right:0;top:50%;transform:translateY(-50%);border-color:var(--red)}
+.b.main.a{left:50%;bottom:0;transform:translateX(-50%);border-color:#4ade80}
+.b.main.on{filter:brightness(1.6)}
+.b.main.y.on,.b.main.a.on{transform:translateX(-50%) scale(.93)}.b.main.x.on,.b.main.b2.on{transform:translateY(-50%) scale(.93)}
+.aux{display:flex;flex-direction:column;gap:10px}
+.def .b.main span{color:#ffb3b3}
+/* configurações */
+.cfg{position:fixed;inset:0;z-index:20;background:#0b0b0bf2;display:grid;align-content:center;gap:10px;padding:20px max(20px,env(safe-area-inset-left));overflow:auto;touch-action:auto;font-family:Arial,sans-serif;font-size:14px}
+.cfg h2{font-family:Anton,Impact,sans-serif;color:var(--gold);letter-spacing:.1em}
+.cfg label{display:grid;grid-template-columns:200px 1fr;align-items:center;gap:10px}.cfg label.chk{display:flex}
+.cfg .row{display:flex;gap:10px;margin-top:8px}.cfg .row button{padding:10px 16px;background:#222;border:1px solid #555;border-radius:6px}.cfg #cfg-close{background:var(--gold);color:#16120a}

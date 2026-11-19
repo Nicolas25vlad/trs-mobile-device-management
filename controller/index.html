@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"/>
+<meta name="theme-color" content="#0b0b0b"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>TRS26 · Controle virtual</title>
+<link rel="icon" href="logo.webp"/>
+<link rel="stylesheet" href="controller.css"/>
+</head>
+<body>
+<!-- pareamento -->
+<section class="pair" id="pair">
+ <img class="logo" src="logo.webp" alt="TRS26"/>
+ <h1>CONTROLE VIRTUAL</h1>
+ <p class="sub">Leia o QR code do computador com a câmera, ou digite o PIN que aparece lá (Menu → Controle virtual).</p>
+ <form id="pin-form" autocomplete="off">
+  <input id="pin" inputmode="numeric" maxlength="7" placeholder="000 000" aria-label="PIN de 6 dígitos"/>
+  <input id="name" maxlength="20" placeholder="Seu nome (opcional)" aria-label="Seu nome"/>
+  <button type="submit" id="pin-go">CONECTAR</button>
+ </form>
+ <div class="status" id="pair-status">Aguardando PIN</div>
+</section>
+<!-- controle -->
+<section class="pad" id="pad" hidden>
+ <header class="bar"><span class="who" id="who">—</span><span class="st" id="st">CONECTADO</span><span class="lat" id="lat"></span><button class="gear" id="gear" aria-label="Configurações">⚙</button></header>
+ <div class="zone left" id="zone-left">
+  <div class="stick" id="stick"><div class="ring"></div><div class="knob" id="knob"></div></div>
+  <button class="b sprint" data-b="sprint">SPRINT</button>
+ </div>
+ <div class="mid"><button class="b small" data-b="switch">TROCAR</button><button class="b small" data-b="pause">PAUSA</button><button class="b small" data-b="support">APOIO</button></div>
+ <div class="zone right" id="zone-right">
+  <div class="diamond">
+   <button class="b main y" data-b="through"><span data-lbl="through">PROF.</span></button>
+   <button class="b main x" data-b="cross"><span data-lbl="cross">CRUZ.</span></button>
+   <button class="b main b2" data-b="shoot"><span data-lbl="shoot">CHUTE</span></button>
+   <button class="b main a" data-b="pass"><span data-lbl="pass">PASSE</span></button>
+  </div>
+  <div class="aux"><button class="b small" data-b="skill">HABIL.</button><button class="b small" data-b="tackle"><span data-lbl="tackle">MARCA</span></button></div>
+ </div>
+</section>
+<!-- configurações -->
+<section class="cfg" id="cfg" hidden>
+ <h2>Configurações do controle</h2>
+ <label>Tamanho dos botões <input type="range" min="0.7" max="1.4" step="0.05" data-cfg="btn"/></label>
+ <label>Tamanho do analógico <input type="range" min="0.7" max="1.5" step="0.05" data-cfg="stick"/></label>
+ <label>Transparência <input type="range" min="0.35" max="1" step="0.05" data-cfg="alpha"/></label>
+ <label>Zona morta <input type="range" min="0" max="0.4" step="0.02" data-cfg="dead"/></label>
+ <label>Sensibilidade <input type="range" min="0.6" max="1.6" step="0.05" data-cfg="sens"/></label>
+ <label class="chk"><input type="checkbox" data-cfg="vib"/> Vibração (quando o aparelho permitir)</label>
+ <label class="chk"><input type="checkbox" data-cfg="mirror"/> Inverter lados (analógico à direita)</label>
+ <label class="chk"><input type="checkbox" data-cfg="dpad"/> Direcional digital (8 direções) em vez de analógico</label>
+ <label class="chk"><input type="checkbox" data-cfg="fs"/> Tela cheia e horizontal automáticas</label>
+ <div class="row"><button id="cfg-reset">PADRÃO</button><button id="cfg-close">FECHAR</button><button id="cfg-leave">DESCONECTAR</button></div>
+</section>
+<script src="controller.js"></script>
+</body>
+</html>
