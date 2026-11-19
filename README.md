@@ -35,7 +35,9 @@ Leia o QR code, autorize no computador e jogue. Sem app, sem instalação, sem d
 O celular vira um controle de verdade para o jogo, que roda no navegador do computador:
 
 - **Pareamento por QR code**: a câmera abre o controle já com o PIN, sem digitar nada.
-- **Analógico e botões com multitoque**: segurar o analógico, correr e passar ao mesmo tempo.
+- **Analógico e botões grandes com multitoque**: segurar o analógico, correr e passar ao mesmo tempo.
+- **Indicador de posse de bola**: o celular mostra se você está com a bola, se é o seu time ou o adversário, com uma faixa colorida, um brilho na borda da tela e uma vibração curta quando você pega a bola. Os rótulos dos botões mudam entre ataque e defesa.
+- **HUD personalizável**: arraste, redimensione e oculte cada botão. O layout fica salvo no celular.
 - **Baixa latência**: botões enviados no próprio evento de toque, e toques curtos nunca se perdem.
 - **Seguro na rede local**: PIN temporário, autorização no computador, um pedido por aparelho e token de reconexão.
 - **Até 4 celulares** por partida, cada um como um controle independente.
@@ -138,6 +140,17 @@ Na rede local, o caminho é celular → roteador → computador, com um único s
 - **Celular em pé:** o controle aparece **girado 90° na hora**, sem precisar de toque, e o analógico é convertido para o eixo certo. Isso também funciona no iPhone, que não tem tela cheia para páginas.
 - Dá para desligar em **⚙ → Tela cheia e horizontal automáticas**.
 
+## Personalizar o HUD
+
+No controle, toque em **⚙ → PERSONALIZAR HUD**:
+
+- **arraste** qualquer botão ou o analógico para onde quiser;
+- toque em um controle e use **− / +** para mudar o tamanho (50% a 200%);
+- **OCULTAR** esconde o controle durante o jogo (no editor ele aparece apagado);
+- **PADRÃO** volta ao layout original e **CONCLUIR** salva.
+
+O layout é guardado no próprio celular, em porcentagem da tela, e vale com o celular deitado ou em pé. Enquanto o editor está aberto, nenhum comando vai para o jogo.
+
 ## Configuração
 
 ```bash
@@ -163,6 +176,7 @@ npm start    # mesmo que node server/server.js
 | Teste | O que cobre |
 |---|---|
 | `tests/qr.test.cjs` | Estrutura do QR pela norma ISO/IEC 18004 (localizadores, temporização, formato BCH, versão) e matrizes de referência |
+| `tests/remote.test.cjs` | Cliente do jogo: posse de bola (inclusive bola parada), envio só quando muda, aviso fora da partida e reenvio ao reconectar |
 | `tests/server.test.cjs` | Servidor real (processo Node + WebSocket) com um jogo falso: PIN, bloqueio, autorização, um pedido por aparelho, recusa, token, pacotes, limite, reconexão, rotas e travessia de diretório |
 
 As matrizes de referência do QR, todas as versões de 1 a 10 e as 8 máscaras foram conferidas com o decodificador [jsQR](https://github.com/cozmo/jsQR), inclusive com módulos trocados.

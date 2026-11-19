@@ -24,7 +24,7 @@
 </section>
 <!-- controle -->
 <section class="pad" id="pad" hidden>
- <header class="bar"><span class="who" id="who">—</span><span class="st" id="st">CONECTADO</span><span class="lat" id="lat"></span><button class="gear" id="gear" aria-label="Configurações">⚙</button></header>
+ <header class="bar"><span class="who" id="who">—</span><span class="poss" id="poss" hidden></span><span class="st" id="st">CONECTADO</span><span class="lat" id="lat"></span><button class="gear" id="gear" aria-label="Configurações">⚙</button></header>
  <div class="zone left" id="zone-left">
   <div class="stick" id="stick"><div class="ring"></div><div class="knob" id="knob"></div></div>
   <button class="b sprint" data-b="sprint">SPRINT</button>
@@ -39,6 +39,12 @@
   </div>
   <div class="aux"><button class="b small" data-b="skill">HABIL.</button><button class="b small" data-b="tackle"><span data-lbl="tackle">MARCA</span></button></div>
  </div>
+ <!-- editor do HUD: fica dentro do controle para girar junto com ele -->
+ <div class="hud-edit" id="hud-edit" hidden>
+  <span class="he-tip">ARRASTE PARA MOVER · TOQUE PARA ESCOLHER</span>
+  <button id="he-minus" aria-label="Diminuir">−</button><span id="he-size">—</span><button id="he-plus" aria-label="Aumentar">+</button>
+  <button id="he-hide">OCULTAR</button><button id="he-reset">PADRÃO</button><button id="he-done" class="ok">CONCLUIR</button>
+ </div>
 </section>
 <!-- configurações -->
 <section class="cfg" id="cfg" hidden>
@@ -52,6 +58,7 @@
  <label class="chk"><input type="checkbox" data-cfg="mirror"/> Inverter lados (analógico à direita)</label>
  <label class="chk"><input type="checkbox" data-cfg="dpad"/> Direcional digital (8 direções) em vez de analógico</label>
  <label class="chk"><input type="checkbox" data-cfg="fs"/> Tela cheia e horizontal automáticas</label>
+ <div class="row"><button id="cfg-hud">PERSONALIZAR HUD</button></div>
  <div class="row"><button id="cfg-reset">PADRÃO</button><button id="cfg-close">FECHAR</button><button id="cfg-leave">DESCONECTAR</button></div>
 </section>
 <script src="controller.js"></script>
