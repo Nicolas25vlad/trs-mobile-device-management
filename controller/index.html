@@ -27,17 +27,18 @@
  <header class="bar"><span class="who" id="who">—</span><span class="poss" id="poss" hidden></span><span class="st" id="st">CONECTADO</span><span class="lat" id="lat"></span><button class="gear" id="gear" aria-label="Configurações">⚙</button></header>
  <div class="zone left" id="zone-left">
   <div class="stick" id="stick"><div class="ring"></div><div class="knob" id="knob"></div></div>
-  <button class="b sprint" data-b="sprint">SPRINT</button>
+  <button class="b sprint" data-b="sprint">CORRER</button>
  </div>
- <div class="mid"><button class="b small" data-b="switch">TROCAR</button><button class="b small" data-b="pause">PAUSA</button><button class="b small" data-b="support">APOIO</button></div>
+ <!-- nomes e dicas dos botões vêm de LABELS em controller.js (mudam entre ataque e defesa) -->
+ <div class="mid"><button class="b small" data-b="switch">TROCAR</button><button class="b small" data-b="pause">PAUSA</button><button class="b small" data-b="support">CHAMAR</button></div>
  <div class="zone right" id="zone-right">
   <div class="diamond">
-   <button class="b main y" data-b="through"><span data-lbl="through">PROF.</span></button>
-   <button class="b main x" data-b="cross"><span data-lbl="cross">CRUZ.</span></button>
-   <button class="b main b2" data-b="shoot"><span data-lbl="shoot">CHUTE</span></button>
-   <button class="b main a" data-b="pass"><span data-lbl="pass">PASSE</span></button>
+   <button class="b main y" data-b="through">ENFIADA</button>
+   <button class="b main x" data-b="cross">CRUZAR</button>
+   <button class="b main b2" data-b="shoot">CHUTAR</button>
+   <button class="b main a" data-b="pass">PASSE</button>
   </div>
-  <div class="aux"><button class="b small" data-b="skill">HABIL.</button><button class="b small" data-b="tackle"><span data-lbl="tackle">MARCA</span></button></div>
+  <div class="aux"><button class="b small" data-b="skill">DRIBLE</button><button class="b small" data-b="tackle">MARCAR</button></div>
  </div>
  <!-- editor do HUD: fica dentro do controle para girar junto com ele -->
  <div class="hud-edit" id="hud-edit" hidden>

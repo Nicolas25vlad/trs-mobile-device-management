@@ -11,6 +11,10 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - Campo `poss` na mensagem `state` e teste do cliente do jogo (`tests/remote.test.cjs`).
 
 ### Alterado
+- **Botões com nomes claros e uma dica do que fazem**, trocando entre ataque e defesa:
+  - **com a bola:** PASSE (rasteiro), ENFIADA (bola em profundidade, antes "PROF."), CRUZAR (ou passe alto), CHUTAR (segure: mais forte), PROTEGER (segura a bola);
+  - **sem a bola:** PRESSIONAR (segure), DESARME (bote em pé), CARRINHO (bote no chão), GOLEIRO (sai do gol), MARCAR (pressiona e dá o bote);
+  - **fixos:** CORRER, TROCAR (jogador), DRIBLE (segure + botão: truque), CHAMAR (companheiro · tabela) no ataque e DOBRAR (marcação com 2) na defesa.
 - **Botões maiores:** analógico 176 px, botões principais 90 px, sprint 92 px e secundários 78×50. Em telas que não comportam, tudo diminui na mesma proporção.
 - A posse é verificada a cada 50 ms (antes, 250 ms) e enviada só quando muda.
 

@@ -46,7 +46,12 @@ button{font:inherit;color:inherit;border:0;background:none}
 .b.main.on{filter:brightness(1.6)}
 .b.main.y.on,.b.main.a.on{transform:translateX(-50%) scale(.93)}.b.main.x.on,.b.main.b2.on{transform:translateY(-50%) scale(.93)}
 .aux{display:flex;flex-direction:column;gap:10px}
-.def .b.main span{color:#ffb3b3}
+/* rótulo: nome + dica curta do que o botão faz */
+.b .lb{display:grid;justify-items:center;gap:2px;line-height:1.05;text-align:center;pointer-events:none;max-width:92%}
+.b .lb b{font-weight:400}
+.b .lb small{font:700 calc(8.5px*var(--btn)*var(--fit))/1.1 Arial,sans-serif;letter-spacing:.01em;color:#ffffffb0}
+.b[data-len=l] .lb b{font-size:.86em}.b[data-len=xl] .lb b{font-size:.74em}
+.def .b.main .lb b{color:#ffb3b3}
 /* posse de bola: faixa na barra + brilho na borda da tela (dá para ver com o canto do olho) */
 .poss{padding:4px 10px;border-radius:4px;font-size:13px;letter-spacing:.08em;background:#333;color:#fff;white-space:nowrap}
 .pad[data-poss=mine] .poss{background:#4ade80;color:#06210f}
