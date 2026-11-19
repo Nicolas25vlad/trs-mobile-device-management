@@ -66,7 +66,7 @@ O servidor só repassa o que está listado aqui e descarta o resto.
 | `replaced` | | Outra aba do mesmo aparelho assumiu. Esta não deve reconectar |
 | `session-ended` | `why` | Sessão encerrada |
 | `host-away` / `host-back` | | Computador caiu ou voltou |
-| `state` | `label`, `side`, `hasBall`, `player`, `attack` | Contexto para os rótulos dos botões |
+| `state` | `label`, `side`, `poss`, `hasBall`, `attack`, `player` | Posse de bola e contexto dos botões. Enviado só quando muda (verificado a cada 50 ms) |
 | `rumble` | `ms` | Vibrar |
 | `hello` | `label` | Identificação do controle |
 | `error` | `code`, `msg` | `blocked`, `pin`, `full`, `denied` ou `resume` |
@@ -88,6 +88,16 @@ O celular envia:
 - **a cada 100 ms** como sinal de vida.
 
 O jogo zera o comando de um controle sem pacote há 800 ms.
+
+## Posse de bola (`state.poss`)
+
+| `poss` | Quando | `attack` |
+|---|---|---|
+| `mine` | Eu estou com a bola, ou sou quem cobra a bola parada | `true` |
+| `team` | Companheiro com a bola, ou bola parada do meu time | `true` |
+| `opp` | Adversário com a bola, ou bola parada dele | `false` |
+| `loose` | Bola sem dono | `true` se o último toque foi do meu time |
+| `idle` | Fora da partida (menu). Só `label` vem junto | |
 
 ## Link de pareamento
 

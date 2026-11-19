@@ -25,7 +25,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "node tests/qr.test.cjs && node tests/server.test.cjs"
+    "test": "node tests/qr.test.cjs && node tests/remote.test.cjs && node tests/server.test.cjs"
   },
   "engines": {
     "node": ">=18"

@@ -3,6 +3,22 @@
 Todas as mudanças relevantes deste projeto ficam aqui.
 O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o projeto usa [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [Não lançado]
+
+### Adicionado
+- **Indicador de posse de bola** no celular: faixa colorida na barra ("COM A BOLA", "TIME COM A BOLA", "SEM A BOLA · DEFENDA", "BOLA DIVIDIDA"), brilho na borda da tela e vibração curta ao pegar a bola. Na bola parada, quem cobra conta como dono.
+- **HUD personalizável** (⚙ → PERSONALIZAR HUD): arrastar, redimensionar (50–200%) e ocultar cada controle. O layout fica salvo no celular e vale em pé ou deitado.
+- Campo `poss` na mensagem `state` e teste do cliente do jogo (`tests/remote.test.cjs`).
+
+### Alterado
+- **Botões maiores:** analógico 176 px, botões principais 90 px, sprint 92 px e secundários 78×50. Em telas que não comportam, tudo diminui na mesma proporção.
+- A posse é verificada a cada 50 ms (antes, 250 ms) e enviada só quando muda.
+
+### Corrigido
+- A mudança de ataque para defesa sem troca do jogador controlado não chegava ao celular.
+- Um celular que reconectava no meio da partida ficava sem o estado até a próxima mudança.
+- Na saída de bola, o controle mostrava os rótulos de defesa.
+
 ## [0.7.0] - 2026-11-19
 
 Primeira versão como repositório próprio. O controle saiu do [game-trs](https://github.com/Traficas-Revolution-Soccer/game-trs), onde existia desde a 0.6.
