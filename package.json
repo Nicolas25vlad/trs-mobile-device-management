@@ -1,0 +1,34 @@
+{
+  "name": "trs-mobile-device-management",
+  "version": "0.7.0",
+  "description": "Controle no celular do Traficas Revolution Soccer: página do controle, servidor de pareamento (WebSocket, PIN, QR code) e cliente do lado do jogo. Sem dependências.",
+  "keywords": [
+    "game-controller",
+    "virtual-gamepad",
+    "mobile-controller",
+    "websocket",
+    "qr-code",
+    "browser-game",
+    "multitouch",
+    "zero-dependencies"
+  ],
+  "homepage": "https://github.com/Traficas-Revolution-Soccer/trs-mobile-device-management#readme",
+  "bugs": {
+    "url": "https://github.com/Traficas-Revolution-Soccer/trs-mobile-device-management/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Traficas-Revolution-Soccer/trs-mobile-device-management.git"
+  },
+  "license": "MIT",
+  "author": "Traficas Revolution Soccer",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node tests/qr.test.cjs && node tests/server.test.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}
