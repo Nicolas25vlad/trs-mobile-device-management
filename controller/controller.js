@@ -54,8 +54,24 @@ function gameState(m){const poss=m.poss||(m.hasBall?'mine':m.attack===false?'opp
  el.hidden=false;el.textContent=POSS[poss]||'';pad.dataset.poss=poss;
  if(poss==='mine'&&lastPoss!=='mine')buzz(35);/* pegou a bola */
  lastPoss=poss;labels(m.attack!==false,poss==='mine');}
-function labels(attack,hasBall){const L=attack?{pass:'PASSE',shoot:'CHUTE',cross:'CRUZ.',through:'PROF.',tackle:hasBall?'PROTEGER':'MARCA'}:{pass:'PRESSÃO',shoot:'CARRINHO',cross:'DESARME',through:'GOLEIRO',tackle:'DESARME'};
- for(const k in L){const el=document.querySelector(`[data-lbl="${k}"]`);if(el)el.textContent=L[k];}$('pad').classList.toggle('def',!attack);}
+/* Nome de cada botão + dica do que ele faz no jogo (game-trs: js/football/world.js, comandos do humano).
+   Ataque: com a bola ou com o time com a bola. Defesa: adversário com a bola. */
+const LABELS={
+ attack:{pass:['PASSE','rasteiro'],through:['ENFIADA','bola em profundidade'],cross:['CRUZAR','ou passe alto'],shoot:['CHUTAR','segure: mais forte'],
+  tackle:['MARCAR','pressiona e dá o bote'],support:['CHAMAR','companheiro · tabela']},
+ mine:{tackle:['PROTEGER','segura a bola']},/* com a bola no pé */
+ defense:{pass:['PRESSIONAR','segure'],through:['GOLEIRO','sai do gol'],cross:['DESARME','bote em pé'],shoot:['CARRINHO','bote no chão'],
+  tackle:['MARCAR','pressiona e dá o bote'],support:['DOBRAR','marcação com 2']},
+ fixed:{sprint:['CORRER',''],switch:['TROCAR','jogador'],skill:['DRIBLE','segure + botão: truque'],pause:['PAUSA','']}};
+function labels(attack,hasBall){const L={...LABELS.fixed,...(attack?LABELS.attack:LABELS.defense),...(attack&&hasBall?LABELS.mine:{})};
+ for(const k in L){const el=document.querySelector(`[data-b="${k}"]`);if(!el)continue;const [t,h]=L[k];
+  let lb=el.querySelector('.lb');if(!lb){el.textContent='';lb=document.createElement('span');lb.className='lb';el.appendChild(lb);}
+  if(lb.dataset.t===t&&lb.dataset.h===h)continue;lb.dataset.t=t;lb.dataset.h=h;lb.textContent='';
+  const b=document.createElement('b');b.textContent=t;lb.appendChild(b);if(h){const s=document.createElement('small');s.textContent=h;lb.appendChild(s);}
+  el.dataset.len=t.length>8?'xl':t.length>6?'l':'';/* nomes longos (PRESSIONAR) diminuem para caber no círculo */
+  el.setAttribute('aria-label',h?t+': '+h:t);}
+ $('pad').classList.toggle('def',!attack);}
+labels(true,false);
 /* Tela cheia e horizontal. O navegador só deixa entrar em tela cheia logo depois de um toque (e só em tela cheia deixa travar
    a orientação), então tentamos em todo toque disponível: CONECTAR, o primeiro toque na tela de espera ou no controle.
    Enquanto isso, se o celular estiver em pé, o controle é girado por CSS (html.playing + retrato): já aparece deitado sem toque nenhum. */
